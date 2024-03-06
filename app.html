@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Hospital Website</title>
+   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    .banner {
+      background-image: url("foo.jpg");
+      background-position: center;
+      background-size: cover;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+
+    .transparent-form {
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 80px; /* Increase the padding to increase form size */
+      border-radius: 10px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: flex-start;
+      position: relative; /* Set the form position to relative */
+    }
+
+    .form-column {
+      display: flex;
+      flex-direction: column;
+      margin-right: 60px;
+    }
+
+    .form-column:last-child {
+      margin-right: 0;
+    }
+
+    .form-column input {
+      margin-bottom: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      color: black;
+      background-color: white; /* Changed text box color to white */
+      width: 100%;
+    }
+
+    .form-column input::placeholder {
+      color: black; /* Set placeholder text color to black */
+    }
+
+    .form-column select {
+      margin-bottom: 20px;
+      padding: 12px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      background-color: white; /* Changed select box color to white */
+      color: black;
+      width: 100%;
+    }
+
+    .form-column select option {
+      color: black;
+    }
+
+    .book-appointment-btn {
+      display: block;
+      width: 200px;
+      padding: 10px 20px;
+      background-color: #2554C7;
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 5px;
+      text-align: center;
+      margin: 40px auto 0; /* Adjust the top margin */
+      position: absolute; /* Set the button position to absolute */
+      bottom: 20px; /* Adjust the distance from the bottom */
+      left: 50%; /* Center the button horizontally */
+      transform: translateX(-50%); /* Center the button using transform */
+    }
+  </style>
+</head>
+<body>
+<div class="banner">
+    <form action="f1.php" method="POST" class="transparent-form">
+      <div class="form-column">
+        <input type="text" placeholder="First Name" name="firstname">
+        <input type="text" placeholder="Last Name" name="lastname">
+        <input type="email" placeholder="Email" name="email">
+        <input type="tel" placeholder="Phone Number" name="phonenumber">
+      </div>
+      <div class="form-column">
+        <input type="date" placeholder="Appointment Date" name="app_date">
+        <select name="doctor">
+          <option value="" disabled selected  name="doctor">Select Doctor</option>
+          <option value="Dr. Sreenivas">Dr. Sreenivas</option>
+          <option value="Dr. Samuel Gnanam">Dr. Samuel Gnanam</option>
+          <option value="Dr. T Vasudevan">Dr. T Vasudevan</option>
+          <option value="Dr. Padma Kumar">Dr. Padma Kumar</option>
+          <option value="Dr. P.Naveen Kumar">Dr. P.Naveen Kumar</option>
+          <option value="Dr. Shanmugasundaram K">Dr. Shanmugasundaram K</option>
+          <option value="Dr. Satyanarayanan">Dr. Satyanarayanan</option>
+          <option value="Dr. R.Sabarisan">Dr. R.Sabarisan</option>
+          <option value="Dr. Anbarasi K">Dr. Anbarasi K</option>
+          <option value="Dr. Ganesh V">Dr. Ganesh V</option>
+          <option value="Dr. Seetha Lakshmi V">Dr. Seetha Lakshmi V</option>
+          <option value="Dr. Tamil Arasan">Dr. Tamil Arasan</option>
+        </select>
+        <select  name="app_time">
+          <option value="" disabled selected>Select Appointment Time</option>
+          <option value="10-10:30">10-10:30</option>
+          <option value="11-11:30">11-11:30</option>
+          <option value="12-12:30">12-12:30</option>
+        </select>
+      </div>
+      <button type="submit" class="book-appointment-btn">Book Appointment</button>
+    </form>
+  </div>
+</body>
+    
+  </div>
+  <script>
+    function validateForm() {
+      // Get form elements
+      const firstName = document.querySelector('input[placeholder="First Name"]');
+      const lastName = document.querySelector('input[placeholder="Last Name"]');
+      const email = document.querySelector('input[placeholder="Email"]');
+      const phoneNumber = document.querySelector('input[placeholder="Phone Number"]');
+      const appointmentDate = document.querySelector('input[placeholder="Appointment Date"]');
+      const selectedDoctor = document.querySelector('select[name="doctor"]');
+      const selectedDepartment = document.querySelector('select[name="department"]');
+
+      // Check if all fields are empty
+      if (
+        !firstName.value.trim() &&
+        !lastName.value.trim() &&
+        !email.value.trim() &&
+        !phoneNumber.value.trim() &&
+        !appointmentDate.value &&
+        !selectedDoctor.value &&
+        !selectedDepartment.value
+      ) {
+        alert("Please fill in all the fields before submitting the form.");
+        return;
+      }
+
+      // Validate other fields (you can add more validation as per your requirements)
+      if (!firstName.value.trim() || !lastName.value.trim() || !email.value.trim() || !phoneNumber.value.trim() || !appointmentDate.value || !selectedDoctor.value || !selectedDepartment.value) {
+        alert("Please fill in all the required fields.");
+        return;
+      }
+
+      // If all fields are filled, show a success message
+      alert("Appointment booked successfully!");
+
+      // Optionally, you can submit the form to a server using AJAX here.
+      // For this example, we are just showing the success message.
+    }
+  </script>
+</body>
+</html>
